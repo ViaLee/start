@@ -1,1 +1,87 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        @import"main.css";
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="main_content"></div>
+    </div>
+</body>
+<script>
+var keys = {
+    0:['q','w','e','r','t','y','u','i','o','p'],
+    1:['a','s','d','f','g','h','j','k','l'],
+    2:['z','x','c','v','b','n','m'],
+    length: 3 
+}
+var hash = {
+    'q': 'qq.com',
+    'w': 'weibo.com',
+    'e': '',
+    'r': 'rails365.net',
+    't': '',
+    'y': '',
+    'u': '',
+    'i': 'iqiyi.com',
+    'o': '',
+    'p': '',
+    'a': '',
+    's': '',
+    'd': '',
+    'f': '',
+    'g': 'github.com',
+    'h': '',
+    'j': '',
+    'k': '',
+    'l': '',
+    'z': '',
+    'x': '',
+    'c': '',
+    'v': 'vart.cc/activities',
+    'b': 'bilibili.com',
+    'n': '',
+    'm': ''
+}
+var hashInLocalStorage = JSON.parse(localStorage.getItem('uuu') || 'null')
+if(hashInLocalStorage){
+    hash = hashInLocalStorage
+}
+// var div1 = document.getElementById('main')
+// var div1 = document.createElement('div')
+// main.appendChild(div1)
+for(index = 0;index<keys.length;index++){
+    div1 = document.createElement('div')
+    main_content.appendChild(div1)
+    for(x = 0;x<keys[index].length;x++){
+        div2 =document.createElement('kbd')
+        div1.appendChild(div2)
+        div2.textContent = keys[index][x]
+        div3 =document.createElement('button')
+        div2.appendChild(div3)
+        div3.textContent = 'E'
+        div3.id = keys[index][x]
+        div3.onclick = function(clicked){
+            key = clicked.target.id
+            newWebsite = prompt('输入一个新的网址')
+            hash[key] = newWebsite
+            localStorage.setItem('zzz', JSON.stringify(hash))
+        }
+    }
+}
+// div2.onkeypress=function(keypress){
+document.onkeypress=function(keypress){
+    console.log(keypress)
+    key = keypress.key
+    website = hash[key]
+    window.open('http://www.'+website, '_blank')
+}
+</script>
+</html>
