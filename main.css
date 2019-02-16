@@ -1,48 +1,71 @@
 *{ margin:0;padding:0;}
-html{
+/* html{
     /* background-image: url('') */
-    background-color: #bee2e7
+    /* background-color: #bee2e7
+} */ 
+body{
+    background-color: #bee2e7;    
+    height: 100vh;
+    background-image: url('flower.jpg');
+    background-size: cover;
 }
 #main{
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 #main_content{
     display: inline-block;
-    margin-top: 18%;
+    background-color: rgba(255, 255, 255, .3)
 }
 
 #main_content > div {
     margin: 0 auto;
 }
 kbd{
-    border: 1px solid gray;
-    margin: 5px 10px;
-    width: 4em;
-    display: inline-block;
+    border: 1px solid #D1E9E9;
+    box-shadow: 0 0 0 1px #8bc4cc,0 2px 0 0 #eee, 0 4px 0 0 #387474;
+    margin: 7px 10px;
+    width: 53px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-transform: uppercase;
     text-align: center;
-    height: 4em;
-    background-color: pink;
+    height: 40px;
+    background-color: #bee2e7;
     border-radius: 8px;
     font-weight: bolder;
+    font-size: 16px;
     position: relative;
 }
+kbd > img {
+    width: 14px;
+    position: absolute;
+    bottom: 4px;
+    left: 3px;
+}
 kbd > button {
-    background-color: pink;
+    background-color: #bee2e7;
     /* float: right; */
     /* margin-right: 8px; */
     /* margin-top: 60%; */
     position: absolute;
-    bottom: 4px;
-    right: 5px;
+    border: none;
+    bottom: 0px;
+    right: 15px;
+    width: 8px;
     display: none;
 }
 kbd:hover > button{
+    /* background-color: #bee2e7; */
     display: block;
 }
 #main_content > div:nth-child(2){
-    margin-left: 1em;
+    margin-left: -22px;
 }
 #main_content > div:nth-child(3){
-    margin-left: 3em;
+    margin-left: -88px;
 }

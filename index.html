@@ -25,58 +25,70 @@ var keys = {
 var hash = {
     'q': 'qq.com',
     'w': 'weibo.com',
-    'e': '',
     'r': 'rails365.net',
-    't': '',
-    'y': '',
-    'u': '',
     'i': 'iqiyi.com',
-    'o': '',
-    'p': '',
-    'a': '',
-    's': '',
-    'd': '',
-    'f': '',
+    'd': 'dilidili.name',
     'g': 'github.com',
-    'h': '',
-    'j': '',
-    'k': '',
-    'l': '',
-    'z': '',
-    'x': '',
-    'c': '',
-    'v': 'vart.cc/activities',
     'b': 'bilibili.com',
-    'n': '',
-    'm': ''
+    'u': ''
 }
-var hashInLocalStorage = JSON.parse(localStorage.getItem('uuu') || 'null')
+var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
 if(hashInLocalStorage){
     hash = hashInLocalStorage
 }
-// var div1 = document.getElementById('main')
-// var div1 = document.createElement('div')
-// main.appendChild(div1)
-for(index = 0;index<keys.length;index++){
-    div1 = document.createElement('div')
+for(var index = 0;index<keys.length;index++){
+    div1 = createTag('div')
     main_content.appendChild(div1)
-    for(x = 0;x<keys[index].length;x++){
-        div2 =document.createElement('kbd')
-        div1.appendChild(div2)
-        div2.textContent = keys[index][x]
-        div3 =document.createElement('button')
-        div2.appendChild(div3)
-        div3.textContent = 'E'
-        div3.id = keys[index][x]
-        div3.onclick = function(clicked){
-            key = clicked.target.id
-            newWebsite = prompt('输入一个新的网址')
-            hash[key] = newWebsite
-            localStorage.setItem('zzz', JSON.stringify(hash))
-        }
+
+
+    for(var x = 0;x<keys[index].length;x++){
+        var key = keys[index][x]
+        var kbd = createTag('kbd')
+            kbd.textContent = keys[index][x]
+
+        var button = createTag('button')
+            button.textContent = 'edit'
+            button.id = keys[index][x]
+            button.onclick = function(c){
+                button2 = c.target
+                key = button2.id
+                var newWebsite = prompt('输入一个新的网址')
+                var img2 = button2.previousSibling
+                if(newWebsite){
+                    img2.src = 'http://' + newWebsite + '/favicon.ico'
+                } 
+                // else {
+                // img.src = 'https://i.loli.net/2019/02/16/5c6774d79c88c.png'
+                // }
+                img2.onerror = function (v) {
+                    v.target.src = 'http://i.loli.net/2019/02/16/5c6774d79c88c.png'
+                    console.log(v.target.src)
+                }
+                hash[key] = newWebsite
+                localStorage.setItem('zzz', JSON.stringify(hash))
+            }
+
+        var img = createTag('img')
+            img.alt = ''
+            if(hash[key]){
+                img.src = 'http://' + hash[key] + '/favicon.ico'
+            } else {
+                img.src = 'https://i.loli.net/2019/02/16/5c6774d79c88c.png'
+            }
+            img.onerror = function (v) {
+                console.log('失败')
+                v.target.src = 'http://i.loli.net/2019/02/16/5c6774d79c88c.png'
+            }
+
+        div1.appendChild(kbd)
+        kbd.appendChild(img)
+        kbd.appendChild(button)
     }
 }
-// div2.onkeypress=function(keypress){
+function createTag(tag) {
+    return document.createElement(tag)
+}
+// kbd.onkeypress=function(keypress){
 document.onkeypress=function(keypress){
     console.log(keypress)
     key = keypress.key
