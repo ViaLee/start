@@ -80,13 +80,13 @@ function getIcon (hash, key) {
     var img = createTag('img')
     img.alt = ''
     if(hash[key]){
-        img.src = 'http://' + hash[key] + '/favicon.ico'
+        img.src = 'https://' + hash[key] + '/favicon.ico'
     } else {
         img.src = 'https://i.loli.net/2019/02/16/5c6774d79c88c.png'
     }
     img.onerror = function (v) {
         console.log('失败')
-        v.target.src = 'http://i.loli.net/2019/02/16/5c6774d79c88c.png'
+        v.target.src = 'https://i.loli.net/2019/02/16/5c6774d79c88c.png'
     }
     return img
 }
@@ -102,10 +102,10 @@ function editButton (hash, key) {
                 var img2 = button2.previousSibling
                 hash[key] = newWebsite
                 if(newWebsite || newWebsite == ''){
-                    img2.src = 'http://' + newWebsite + '/favicon.ico'
+                    img2.src = 'https://' + newWebsite + '/favicon.ico'
                 } 
                 img2.onerror = function (v) {
-                    v.target.src = 'http://i.loli.net/2019/02/16/5c6774d79c88c.png'
+                    v.target.src = 'https://i.loli.net/2019/02/16/5c6774d79c88c.png'
                 }
                 localStorage.setItem('zzz', JSON.stringify(hash))
             }
